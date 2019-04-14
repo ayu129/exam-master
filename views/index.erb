@@ -50,7 +50,7 @@
                     <select id="categories" name="category">
                         <!-- カテゴリに関する記述はここに -->
                           <% @categories.each do |category| %>
-                            <option value=“<%= category.id %>”><%= category.name %></option>
+                            <option value="<%= category.id %>"><%= category.name %></option>
                           <% end %>
                     </select>
 
@@ -73,7 +73,7 @@
                         </div>
                         <div class="meta">
                             <!-- メモのカテゴリはここに -->
-                            <p><%= category.try(:name) %></p>
+                            <p><%= @categories.try(:name) %></p>
                         </div>
                     </div>
                     <div class="content">
@@ -85,11 +85,11 @@
                     <div class="extra content">
                         <div class="ui two buttons">
                             <!-- メモの編集・削除に関しては下記を編集 -->
-                            <form action=“/edit/<%= item.id %>” method=“post”>
-                             <input type=“submit” value=“編集”>
+                            <form action="/edit/<%= item.id %>" method="post" class="ui basic blue button">
+                             <input type="submit" value="編集">
                             </form>
-                            <form action=“/delete/<%= item.id %>” method=“post” class="ui basic blue button">
-                             <input type=“submit” value=“削除”>
+                            <form action="/delete/<%= item.id %>" method="post" class="ui basic blue button">
+                             <input type="submit" value="削除">
                             </form>
                         </div>
                     </div>
