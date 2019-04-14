@@ -31,18 +31,20 @@
                 <fieldset>
                     <legend>メモの編集</legend>
 
-                    <input type="text" name="" placeholder="タイトル" value="">
-                    <input type="text" name="" placeholder="内容" value="">
+                    <input type="text" name="title" placeholder="タイトル" value="タイトル">
+                    <input type="text" name="body" placeholder="内容" value="内容">
 
                     <label for="categories">カテゴリ</label>
-                    <select id="categories" name="">
+                    <select id="categories" name="category">
                         <!-- カテゴリに関する記述はここに -->
                         <option value="">カテゴリ名1</option>
                         <option value="">カテゴリ名2</option>
                         <option value="">カテゴリ名3</option>
                     </select>
 
-                    <button type="submit" class="pure-button pure-button-primary">更新</button>
+                    <form action="/renew" method="post">
+                    <input type=“submit” value=“更新”>
+                    </form>
                 </fieldset>
             </form>
         </div>
