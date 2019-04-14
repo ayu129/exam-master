@@ -2,7 +2,7 @@ require 'bundler/setup'
 Bundler.require
 require 'sinatra/reloader' if development?
 require 'sinatra/activerecord'
-require './models'
+require './models/item'
 
 get '/' do
   @items = Item.all
@@ -11,36 +11,36 @@ get '/' do
 end
 
 # メモを新しく作成するときの処理
-post ‘/create’ do
+post '/create' do
  Item.create({
  title: params[:title],
  body: params[:body],
  category_id: params[:category]
 })
-redirect ‘/‘
+redirect '/'
 end
 
 # 特定のメモを編集するときの処理
-post ‘edit/:id’ do
+post 'edit/:id' do
  @item = Item.find(params[:id])
  erb :edit
 end
 # 特定のメモを更新するときの処理
-post ‘renew/:id’ do
+post 'renew/:id' do
  @item = Item.find(params[:id])
  @item.update({
   title: params[:title],
   body: params[:body]
  })
-redirect ‘/‘
+redirect '/'
 end
 # 特定のメモを削除するときの処理
-post ‘/delete/:id’ do
+post '/delete/:id' do
  Item.find(params[:id]).destroy
- redirect ‘/‘
+ redirect '/'
 end
 # メモをカテゴリ分類して表示するときの処理
-get ‘/category/:id’ do
+get '/category/:id' do
  @categories = Category.all
  @cagtegory = Category.find(params[:id])
  @category_name = @category.name

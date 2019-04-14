@@ -2,6 +2,6 @@ ActiveRecord::Base.establish_connection(ENV['DATABASE_URL']||"sqlite3:db/develop
 class Item < ActiveRecord::Base
   belongs_to :category
 end
-class Category < ActiveRecord
+class Category < ActiveRecord::Base
   has_many :items
 end
