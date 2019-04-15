@@ -27,7 +27,7 @@
 
         <div class="main">
             <!-- フォームに関する記述はここに -->
-            <form class="pure-form" action="/renew" method="post">
+            <form class="pure-form" action="/renew/<%= @item.id %>" method="post">
                 <fieldset>
                     <legend>メモの編集</legend>
 
@@ -37,9 +37,12 @@
                     <label for="categories">カテゴリ</label>
                     <select id="categories" name="category">
                         <!-- カテゴリに関する記述はここに -->
-                        <option value="">カテゴリ名1</option>
-                        <option value="">カテゴリ名2</option>
-                        <option value="">カテゴリ名3</option>
+                        <option value="PROGRAMING">PROGRAMING</option>
+                        <option value="WEB">WEB</option>
+                        <option value="DESIGN">DESIGN</option>
+                        <option value="LIFE HACK">LIFE HACK</option>
+                        <option value="HOBBY">HOBBY</option>
+                        <option value="OTHER">OTHER</option>
                     </select>
 
                     <input type=“submit” value=“更新”>

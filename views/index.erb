@@ -49,9 +49,12 @@
                     <label for="categories">カテゴリ</label>
                     <select id="categories" name="category">
                         <!-- カテゴリに関する記述はここに -->
-                          <% @categories.each do |category| %>
-                            <option value="<%= category.id %>"><%= category.name %></option>
-                          <% end %>
+                            <option value="PROGRAMING">PROGRAMING</option>
+                            <option value="WEB">WEB</option>
+                            <option value="DESIGN">DESIGN</option>
+                            <option value="LIFE HACK">LIFE HACK</option>
+                            <option value="HOBBY">HOBBY</option>
+                            <option value="OTHER">OTHER</option>
                     </select>
 
                     <button type="submit" class="pure-button pure-button-primary">追加</button>
