@@ -22,7 +22,6 @@
         <div class="custom-menu-wrapper">
             <div class="pure-menu custom-menu custom-menu-top">
                 <a href="/" class="pure-menu-heading custom-menu-brand">Memo Cloud</a>
-                <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
             </div>
             <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
                 <div class="custom-menu-screen"></div>
@@ -30,8 +29,9 @@
                     <!-- カテゴリメニューの記述はこのulタグ内に -->
                     <!-- 下のliタグを参考に各カテゴリ用のliを追加しよう -->
                      <% @categories.each do |category| %>
-                    <li class="pure-menu-item"><a href="<%= category.name %>" class="pure-menu-link"><%= cagegory.body %></a></li>
+                    <li class="pure-menu-item"><a href="/category/<%= category.id %>" class="pure-menu-link"><%= category.name %></a></li>
                     <% end %>
+
 
                 </ul>
             </div>
@@ -47,25 +47,23 @@
                     <input type="text" name="body" placeholder="内容">
 
                     <label for="categories">カテゴリ</label>
-                    <select id="categories" name="category">
+                    <select id="category" name="category">
                         <!-- カテゴリに関する記述はここに -->
-                            <option value="PROGRAMING">PROGRAMING</option>
-                            <option value="WEB">WEB</option>
-                            <option value="DESIGN">DESIGN</option>
-                            <option value="LIFE HACK">LIFE HACK</option>
-                            <option value="HOBBY">HOBBY</option>
-                            <option value="OTHER">OTHER</option>
+                            <% @categories.each do |category| %>
+                                <option value="<%= category.id %>"><%= category.name %></option>
+                            <% end %>
                     </select>
 
                     <button type="submit" class="pure-button pure-button-primary">追加</button>
                 </fieldset>
             </form>
 
-            <div class="ui cards">
-                <!-- メモの表示関連はここに記述 -->
-                <% if @category_name.present? %>
+            <% if @category_name.present? %>
                  <h2><%= @category_name %></h2>
                 <% end %>
+
+            <div class="ui cards">
+                <!-- メモの表示関連はここに記述 -->
                 <% @items.each do |item| %>
                 <!-- 下記のcardクラスのdivタグで囲まれた範囲が一つのカードに相当する -->
                 <div class="card">
@@ -76,7 +74,7 @@
                         </div>
                         <div class="meta">
                             <!-- メモのカテゴリはここに -->
-                            <p><%= @categories.try(:name) %></p>
+                            <p><%= item.category.try(:name) %></p>
                         </div>
                     </div>
                     <div class="content">
@@ -88,12 +86,8 @@
                     <div class="extra content">
                         <div class="ui two buttons">
                             <!-- メモの編集・削除に関しては下記を編集 -->
-                            <form action="/edit/<%= item.id %>" method="post" class="ui basic blue button">
-                             <input type="submit" value="編集">
-                            </form>
-                            <form action="/delete/<%= item.id %>" method="post" class="ui basic blue button">
-                             <input type="submit" value="削除">
-                            </form>
+                            <a href="/edit/<%= item.id %>" class="ui basic blue button">編集</a>
+                            <a href="/delete/<%= item.id %>" class="ui basic blue button">削除</a>
                         </div>
                     </div>
                 </div>

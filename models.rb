@@ -10,7 +10,17 @@ ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || "sqlite3:db/devel
 # 大文字から始めて単数形で表現します
 ##############################################
 
+class Item < ActiveRecord::Base
+  belongs_to :category
+end
+class Category < ActiveRecord::Base
+  has_many :items
+end
+
+
+
+
+
 # メモに関するモデルの作成
 
 # カテゴリに関するモデルの作成
-
