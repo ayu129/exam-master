@@ -22,6 +22,7 @@
         <div class="custom-menu-wrapper">
             <div class="pure-menu custom-menu custom-menu-top">
                 <a href="/" class="pure-menu-heading custom-menu-brand">Memo Cloud</a>
+                <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
             </div>
             <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
                 <div class="custom-menu-screen"></div>
@@ -87,7 +88,7 @@
                         <div class="ui two buttons">
                             <!-- メモの編集・削除に関しては下記を編集 -->
                             <a href="/edit/<%= item.id %>" class="ui basic blue button">編集</a>
-                            <a href="/delete/<%= item.id %>" class="ui basic blue button">削除</a>
+                            <a href="/delete/<%= item.id %>" class="ui basic red button">削除</a>
                         </div>
                     </div>
                 </div>

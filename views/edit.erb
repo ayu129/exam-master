@@ -31,18 +31,15 @@
                 <fieldset>
                     <legend>メモの編集</legend>
 
-                    <input type="text" name="title" placeholder="タイトル" value="タイトル">
-                    <input type="text" name="body" placeholder="内容" value="内容">
+                    <input type="text" name="title" placeholder="<%= @item.title %>" value="<%= @item.title %>">
+                    <input type="text" name="body" placeholder="<%= @item.body %>" value="<%= @item.body %>">
 
                     <label for="categories">カテゴリ</label>
                     <select id="categories" name="category">
                         <!-- カテゴリに関する記述はここに -->
-                        <option value="PROGRAMING">PROGRAMING</option>
-                        <option value="WEB">WEB</option>
-                        <option value="DESIGN">DESIGN</option>
-                        <option value="LIFE HACK">LIFE HACK</option>
-                        <option value="HOBBY">HOBBY</option>
-                        <option value="OTHER">OTHER</option>
+                            <% @categories.each do |category| %>
+                                <option value="<%= category.id %>"><%= category.name %></option>
+                            <% end %>
                     </select>
 
                     <button type=“submit” class="pure-button pure-button-primary">更新</button>

@@ -23,6 +23,7 @@ end
 # 特定のメモを編集するときの処理
 get '/edit/:id' do
  @item = Item.find(params[:id])
+ @categories = Category.all
  erb :edit
 end
 # 特定のメモを更新するときの処理
@@ -30,7 +31,8 @@ post '/renew/:id' do
  @item = Item.find(params[:id])
  @item.update({
   title: params[:title],
-  body: params[:body]
+  body: params[:body],
+  category_id: params[:category]
  })
 redirect '/'
 end
